@@ -6,9 +6,10 @@ from typing import Any, List, Union
 import joblib
 import numpy as np
 import pandas as pd
+from sklearn.pipeline import Pipeline
+
 from classification_model import __version__ as _version
 from classification_model.config.core import DATASET_DIR, TRAINED_MODEL_DIR, config
-from sklearn.pipeline import Pipeline
 
 logger = logging.getLogger(__name__)
 
@@ -58,7 +59,7 @@ def pre_pipeline_preparation(*, dataframe: pd.DataFrame) -> pd.DataFrame:
 
 def _load_raw_dataset(*, file_name: str) -> pd.DataFrame:
     dataframe = pd.read_csv(Path(f"{DATASET_DIR}/{file_name}"))
-    return transformed
+    return dataframe
 
 
 def load_dataset(*, file_name: str) -> pd.DataFrame:
@@ -92,7 +93,7 @@ def load_pipeline(*, file_name: str) -> Pipeline:
     return trained_model
 
 
-def remove_old_pipelines(*, files_to_keep: t.List[str]) -> None:
+def remove_old_pipelines(*, files_to_keep: List[str]) -> None:
     """
     Remove old model pipelines.
     This is to ensure there is a simple one-to-one

@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./assignment-section-05",
+        "./section-05-production-model-package"
+    ]
+}
